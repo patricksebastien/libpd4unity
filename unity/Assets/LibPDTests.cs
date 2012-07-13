@@ -28,9 +28,9 @@ public class LibPDTests : MonoBehaviour
     public static void loadPatch()
 	{
 			LibPD.ReInit();
-
+			// this is: 2 inputs channels, 3 outputs channels @ 44100hz
 			LibPD.OpenAudio(2, 3, 44100);
-			SPatch = LibPD.OpenPatch(Application.dataPath + "/test_csharp.pd");
+			SPatch = LibPD.OpenPatch(Application.dataPath + "/inout.pd");
 			LibPD.ComputeAudio(true);
 	}
     
