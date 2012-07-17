@@ -19,6 +19,9 @@ public class libpd4unity
         Console.WriteLine("libpd4unity");
         loadPatch();
         testAudio();
+        testSend();
+        testAudio();
+        testReceive();
         closePatch();
         Console.ReadLine();
     }
@@ -53,5 +56,87 @@ public class libpd4unity
 		Console.WriteLine(inBuffer[10]);
 		Console.WriteLine(outBuffer[10]);
 	}
+    
+    public static void testSend()
+	{
+    	// send to [r baz]
+		LibPD.SendFloat("baz", 10);
+    }
+    
+    public static void testReceive()
+    {
+    		var receiver = "spam";
+			var listArgs = new object[]{"hund", 1, "katze", 2.5, "maus", 3.1f};
+			var msgName = "testing";
+			var msgArgs = new object[]{"one", 1, "two", 2};
+
+			LibPD.Subscribe(receiver);
+
+			var n = 0;
+
+			LibPDBang delBang = delegate(string recv)
+			{
+				Console.WriteLine(recv);
+				n++;
+			};
+
+			LibPD.Bang += delBang;
+
+			LibPDFloat delFloat = delegate(string recv, float x) 
+			{
+				Console.WriteLine(x);
+				n++;
+			};
+
+			LibPD.Float += delFloat;
+
+			LibPDSymbol delSymbol = delegate(string recv, string sym) 
+			{
+	
+				n++;
+			};
+
+			LibPD.Symbol += delSymbol;
+
+			LibPDList delList = delegate(string recv, object[] args) 
+			{  
+
+
+				for (int i = 0; i < args.Length; i++) 
+				{
+		
+				}
+				n++;
+			};
+
+			LibPD.List += delList;
+
+			LibPDMessage delMessage = delegate(string recv, string msg, object[] args) 
+			{  
+
+
+
+				for (int i = 0; i < args.Length; i++) 
+				{
+
+				}
+				n++;
+			};
+
+			LibPD.Message += delMessage;
+
+			LibPD.SendBang(receiver);
+			LibPD.SendFloat("spami", 42);
+			LibPD.SendSymbol(receiver, "hund katze maus");
+			LibPD.SendList(receiver, listArgs);
+			LibPD.SendMessage(receiver, msgName, msgArgs);
+
+			LibPD.Bang -= delBang;
+			LibPD.Float -= delFloat;
+			LibPD.Symbol -= delSymbol;
+			LibPD.List -= delList;
+			LibPD.Message -= delMessage;
+    	
+    }
     
 }

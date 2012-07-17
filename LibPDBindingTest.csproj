@@ -55,13 +55,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LibPDNativeMessaging.cs" />
+    <Compile Include="LibPDNativeMethods.cs" />
+    <Compile Include="LibPDNativeMidi.cs" />
     <Compile Include="LibPDTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\csharp\LibPDBinding.csproj">
-      <Project>0D2EF933-6094-4DE1-9D63-9B43786C06AE</Project>
-      <Name>LibPDBinding</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="test_csharp.pd">
