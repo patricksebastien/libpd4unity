@@ -293,7 +293,7 @@ namespace LibPDBinding
 			return process_raw(inBuffer, outBuffer);
 		}
 		
-/*		[DllImport("libpdcsharp", EntryPoint="libpd_process_raw")]
+		/*[DllImport("libpdcsharp", EntryPoint="libpd_process_raw")]
 		private static unsafe extern  int process_raw(float* inBuffer, float* outBuffer) ;
 
 		/// <summary>
@@ -339,7 +339,7 @@ namespace LibPDBinding
 			return process_short(ticks, inBuffer, outBuffer);
 		}
 		
-/*		[DllImport("libpdcsharp", EntryPoint="libpd_process_short")]
+		/*[DllImport("libpdcsharp", EntryPoint="libpd_process_short")]
 		private static unsafe extern  int process_short(int ticks, short* inBuffer, short* outBuffer) ;
 		
 		/// <summary>
@@ -369,6 +369,8 @@ namespace LibPDBinding
 		///outBuffer: float*
 		[DllImport("libpdcsharp", EntryPoint="libpd_process_float")]
 		private static extern  int process_float(int ticks, [In] float[] inBuffer, [Out] float[] outBuffer) ;
+		
+		
 
 		/// <summary>
 		/// main process callback, reads samples from inBuffer and writes samples to
@@ -388,7 +390,28 @@ namespace LibPDBinding
 			return process_float(ticks, inBuffer, outBuffer);
 		}
 		
-/*		[DllImport("libpdcsharp", EntryPoint="libpd_process_float")]
+		[DllImport("libpdcsharp", EntryPoint="libpd_process_float")]
+		private static extern  int process_float(int ticks, [In] IntPtr inBuffer, [Out] IntPtr outBuffer) ;
+		[MethodImpl(MethodImplOptions.Synchronized)]
+		public static int Process(int ticks, IntPtr inBuffer, IntPtr outBuffer)
+		{
+			return process_float(ticks, inBuffer, outBuffer);
+		}
+		
+		
+		
+		
+		[DllImport("libpdcsharp", EntryPoint="libpd_process_unity")]
+		private static extern  int process_unity(int ticks, [In] IntPtr inBuffer, [Out] IntPtr outBuffer, ref double time) ;
+		[MethodImpl(MethodImplOptions.Synchronized)]
+		public static int Process(int ticks, IntPtr inBuffer, IntPtr outBuffer, ref double time)
+		{
+			return process_unity(ticks, inBuffer, outBuffer, ref time);
+		}
+		
+		
+		
+		/*[DllImport("libpdcsharp", EntryPoint="libpd_process_float")]
 		private static unsafe extern  int process_float(int ticks, float* inBuffer, float* outBuffer) ;
 
 		/// <summary>
@@ -409,7 +432,7 @@ namespace LibPDBinding
 		public static unsafe int Process(int ticks, float* inBuffer, float* outBuffer)
 		{
 			return process_float(ticks, inBuffer, outBuffer);
-		}	*/	
+		}*/
 		
 		/// Return Type: int
 		///ticks: int
@@ -435,8 +458,8 @@ namespace LibPDBinding
 		{
 			return process_double(ticks, inBuffer, outBuffer);
 		}
-		
-/*		[DllImport("libpdcsharp", EntryPoint="libpd_process_double")]
+		/*
+		[DllImport("libpdcsharp", EntryPoint="libpd_process_double")]
 		private static unsafe extern int process_double(int ticks, double* inBuffer, double* outBuffer) ;
 		
 		/// <summary>
@@ -457,8 +480,8 @@ namespace LibPDBinding
 		public static unsafe int Process(int ticks, double* inBuffer, double* outBuffer)
 		{
 			return process_double(ticks, inBuffer, outBuffer);
-		}	*/	
-		
+		}		
+		*/
 		#endregion Audio
 
 		#region Array
@@ -502,8 +525,8 @@ namespace LibPDBinding
 			return read_array(destination, source, srcOffset, n);
 		}
 		
-		
-/*		[DllImport("libpdcsharp", EntryPoint="libpd_read_array")]
+		/*
+		[DllImport("libpdcsharp", EntryPoint="libpd_read_array")]
 		private static unsafe extern  int read_array(float* dest, [In] [MarshalAs(UnmanagedType.LPStr)] string src, int offset, int n) ;
 
 		/// <summary>
@@ -520,8 +543,8 @@ namespace LibPDBinding
 		public static unsafe int ReadArray(float* destination, string source, int srcOffset, int n)
 		{
 			return read_array(destination, source, srcOffset, n);
-		}*/
-		
+		}
+		*/
 		[DllImport("libpdcsharp", EntryPoint="libpd_write_array")]
 		private static extern  int write_array([In] [MarshalAs(UnmanagedType.LPStr)] string dest, int offset, [In] float[] src, int n) ;
 		
@@ -543,8 +566,8 @@ namespace LibPDBinding
 			
 			return write_array(destination, destOffset, source, n);
 		}
-		
-/*		[DllImport("libpdcsharp", EntryPoint="libpd_write_array")]
+		/*
+		[DllImport("libpdcsharp", EntryPoint="libpd_write_array")]
 		private static unsafe extern int write_array([In] [MarshalAs(UnmanagedType.LPStr)] string dest, int offset, float* src, int n) ;
 		
 		/// <summary>
