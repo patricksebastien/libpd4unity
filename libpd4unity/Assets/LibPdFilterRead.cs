@@ -4,7 +4,7 @@ using LibPDBinding;
 using System.Runtime.InteropServices;
 using System;
 
-public class LibPdFilter : MonoBehaviour
+public class LibPdFilterRead : MonoBehaviour
 {
 	private GCHandle dataHandle;
 	private IntPtr dataPtr;
@@ -12,21 +12,20 @@ public class LibPdFilter : MonoBehaviour
 	public string patch;
 	private int SPatch;
 	private bool islibpdready;
-	private bool isready;
-	public double time;
-	public float value;
+	public float send_freq;
 	private string path;
 	
 	void Awake ()
 	{
 		path = Application.dataPath + "/" + patch;
 		loadPatch ();
-		isready = true;
 	}
 	
 	public void loadPatch ()
 	{
-		Debug.Log("Load patch");
+		Debug.Log("Load patch:" + path);
+		
+		// we can also work in stereo or more: LibPD.OpenAudio (2, 2, 48000);
 		if(!islibpdready)
 		{
 			LibPD.OpenAudio (1, 1, 48000);
@@ -35,10 +34,10 @@ public class LibPdFilter : MonoBehaviour
 		LibPD.ComputeAudio (true);
 		islibpdready = true;
 		
-		LibPD.Print += Receive;
+		//LibPD.Print += Receive;
 	}
 
-	// delegate for [s osc] float
+	// delegate for [print]
 	void Receive(string msg) 
 	{
 		Debug.Log("print:" + msg);
@@ -60,16 +59,15 @@ public class LibPdFilter : MonoBehaviour
 			dataPtr = dataHandle.AddrOfPinnedObject();
 		}
 		
-		if (islibpdready && isready) {	
-			LibPD.SendFloat(SPatch + "freq", value);
+		if (islibpdready) {
+			LibPD.SendFloat(SPatch + "freq", send_freq);
 			LibPD.SendFloat(SPatch + "turn", 1f);
-			LibPD.Process(32, dataPtr, dataPtr);	
+			LibPD.Process(32, dataPtr, dataPtr);
 			LibPD.SendFloat(SPatch + "turn", 0f);
 		}
 		
 	}
 	
-
 	void OnApplicationQuit ()
 	{
 		closePatch ();
@@ -80,4 +78,5 @@ public class LibPdFilter : MonoBehaviour
 		dataHandle.Free();
 		dataPtr = IntPtr.Zero;
 	}
+	
 }

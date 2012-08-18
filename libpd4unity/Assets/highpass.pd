@@ -1,0 +1,11 @@
+#N canvas 573 76 535 553 10;
+#X obj 76 58 adc~ 1;
+#X obj 77 403 dac~ 1;
+#X obj 383 56 r \$0turn;
+#X obj 383 79 switch~;
+#X obj 76 160 hip~;
+#X obj 98 129 r \$0freq;
+#X connect 0 0 4 0;
+#X connect 2 0 3 0;
+#X connect 4 0 1 0;
+#X connect 5 0 4 1;
