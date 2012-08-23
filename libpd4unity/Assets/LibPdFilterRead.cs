@@ -17,7 +17,7 @@ public class LibPdFilterRead : MonoBehaviour
 	
 	void Awake ()
 	{
-		path = Application.dataPath + "/" + patch;
+		path = Application.dataPath + "/Patches/" + patch;
 		loadPatch ();
 	}
 	
