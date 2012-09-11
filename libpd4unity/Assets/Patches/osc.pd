@@ -1,6 +1,6 @@
 #N canvas 188 169 535 471 10;
 #X obj 105 90 dac~ 1;
-#X obj 389 41 r \$0turn;
+#X obj 389 41 r \$0onoff;
 #X obj 389 63 switch~;
 #X obj 105 46 r \$0freq;
 #X obj 105 69 osc~ 200;
