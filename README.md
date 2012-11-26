@@ -13,3 +13,12 @@ please fork and pull request.
 * Jean-Sébastien Leduc (bridge)
 
 ** you need to copy libpdcsharp.dll where Unity.exe is installed or where your game executable is located in case of a pc standalone build.
+
+### alternative: ###
+https://github.com/hagish/kalimba
+
+### howto: ###
+install mingw and compile libpd (https://github.com/libpd/libpd)
+make csharplib
+
+copy libs/libpdcsharl.dll to Assets/Plugins
