@@ -1,9 +1,9 @@
 #N canvas 188 169 535 471 10;
 #X obj 105 90 dac~ 1;
-#X obj 389 41 r \$0onoff;
 #X obj 389 63 switch~;
 #X obj 105 46 r \$0freq;
 #X obj 105 69 osc~ 200;
-#X connect 1 0 2 0;
-#X connect 3 0 4 0;
-#X connect 4 0 0 0;
+#X obj 389 41 r \$0turn;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X connect 4 0 1 0;
