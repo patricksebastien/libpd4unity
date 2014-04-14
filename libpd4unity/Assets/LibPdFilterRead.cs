@@ -24,6 +24,8 @@ public class LibPdFilterRead : MonoBehaviour
 	// Pd initialisation and patch open on game awake
 	void Awake ()
 	{	
+		PluginUtils.ResolvePath();
+
 		// Delegate for 'print' 
 		LibPD.Print += ReceivePrint;
 
