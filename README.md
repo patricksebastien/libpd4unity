@@ -34,15 +34,16 @@ To ensure cross-platform compatibility, place all patches, audio files and exter
 * Peter Brinkmann (libpd)
 * Tebjan Halm (libpdcsharp)
 * Jean-Sébastien Leduc (bridge)
-* Patrick Sebastien (all the initial hard work and Windows support)
-* Varun Nair (OSX and Android)
+* Patrick Sebastien || http://www.workinprogress.ca || (all the initial work and Windows support)
+* Varun Nair || http://www.re-sounding.com/ || (OSX and Android) 
+* Peter Cardwell-Gardner || http://www.thefuntastic.com/ || (dll not found fix)
 
 
 ### alternative: ###
 https://github.com/hagish/kalimba
 
 ### howto: ###
-* Windows: install mingw and compile libpd (https://github.com/libpd/libpd)
-make csharplib. copy libs/libpdcsharl.dll to Assets/Plugins
+* Windows: install mingw legacy (http://sourceforge.net/projects/mplayer-ww/files/MinGW-full/) and compile libpd (https://github.com/libpd/libpd)
+make csharplib. copy libs/libpdcsharl.dll / pthreadGC2.dll to Assets/Plugins
 * OSX: More info coming soon (libpdcsharp.bundle included with this project works fine)
 * Android: More info coming soon (libpdcsharp.so included with this project works fine)
