@@ -24,16 +24,16 @@ To ensure cross-platform compatibility, place all patches, audio files and exter
 * Unpredictable SIGILL when using Unity Editor
 * Android: Can currently only open patches that have no dependencies. Pd won't find externals or audio files within the PdAssets folder. This is an Android OS related issue. Might need to use one of the Android APIs to fix this.
 
-### LibPd4UnityTools ###
-Set of tools to facilitate the communication between LibPd and the Unity game engine
-https://github.com/Magicolo/LibPd4UnityTools
+### uPD ###
+A relatively complete alternative to Unity's audio engine using Pure Data and LibPD.
+https://github.com/Magicolo/uPD
 
 ### thanks to: ###
 * Miller Puckette (pure data)
 * Peter Brinkmann (libpd)
 * Tebjan Halm (libpdcsharp)
 * Jean-Sébastien Leduc (bridge)
-* Magicolo (LibPd4UnityTools)
+* Magicolo (uPD)
 * Patrick Sebastien || http://www.workinprogress.ca || (all the initial work and Windows support)
 * Varun Nair || http://www.re-sounding.com/ || (OSX and Android) 
 * Peter Cardwell-Gardner || http://www.thefuntastic.com/ || (dll not found fix)
